@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STOCKROOM — Fashion Inbound Control Centre</title>
+  <style>
+    :root {
+      --bg-cream: #FAF6F0;
+      --card-white: #FFFFFF;
+      --burgundy: #5C1D24;
+      --soft-pink: #FCEBE6;
+      --rose-accent: #E8A09A;
+      --dark-brown: #3D2314;
+      --border-gray: #E0DAD5;
+      --red-soft: #FADBD8;
+      --yellow-soft: #FCF3CF;
+      --green-soft: #D4EFDF;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-cream);
+      color: var(--dark-brown);
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar Navigation */
+    aside {
+      width: 240px;
+      background-color: var(--soft-pink);
+      border-right: 1px solid var(--border-gray);
+      padding: 24px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    aside .brand {
+      font-size: 20px;
+      font-weight: bold;
+      color: var(--burgundy);
+      margin-bottom: 24px;
+      padding-left: 12px;
+    }
+
+    aside nav button {
+      width: 100%;
+      text-align: left;
+      padding: 12px 16px;
+      border: none;
+      background: transparent;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--burgundy);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    aside nav button:hover, aside nav button.active {
+      background-color: var(--card-white);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    /* Main Container */
+    main {
+      flex: 1;
+      padding: 32px;
+      overflow-y: auto;
+    }
+
+    header {
+      margin-bottom: 24px;
+    }
+
+    header h1 {
+      font-size: 24px;
+      color: var(--burgundy);
+    }
+
+    header p {
+      font-size: 14px;
+      color: var(--dark-brown);
+      opacity: 0.8;
+    }
+
+    /* KPI Cards Row */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .kpi-card {
+      background-color: var(--card-white);
+      border: 1px solid var(--border-gray);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+
+    .kpi-card .label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: var(--dark-brown);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    .kpi-card .value {
+      font-size: 28px;
+      font-weight: bold;
+      color: var(--burgundy);
+    }
+
+    /* Content Cards / Tables */
+    .section-card {
+      background-color: var(--card-white);
+      border: 1px solid var(--border-gray);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+
+    .section-card h2 {
+      font-size: 16px;
+      color: var(--burgundy);
+      margin-bottom: 16px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    th {
+      background-color: var(--burgundy);
+      color: white;
+      text-align: left;
+      padding: 12px;
+      font-weight: 600;
+    }
+
+    th:first-child { border-top-left-radius: 6px; }
+    th:last-child { border-top-right-radius: 6px; }
+
+    td {
+      padding: 12px;
+      border-bottom: 1px solid var(--border-gray);
+    }
+
+    /* Status Pill Badges */
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .badge-late { background-color: var(--red-soft); color: #900C3F; }
+    .badge-risk { background-color: var(--yellow-soft); color: #7D6608; }
+    .badge-healthy { background-color: var(--green-soft); color: #1E8449; }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar Nav -->
+  <aside>
+    <div class="brand">STOCKROOM</div>
+    <nav>
+      <button class="active">🏠 Dashboard</button>
+      <button>📦 PO Tracker</button>
+      <button>🚚 Shipments</button>
+      <button>⚠️ Stock Risk</button>
+      <button>🏭 Suppliers</button>
+    </nav>
+  </aside>
+
+  <!-- Main View -->
+  <main>
+    <header>
+      <h1>Good morning 👋</h1>
+      <p>Here is your inbound logistics & operational summary.</p>
+    </header>
+
+    <!-- Top KPI Row -->
+    <section class="kpi-grid">
+      <div class="kpi-card">
+        <div class="label">Open POs</div>
+        <div class="value">2</div>
+      </div>
+      <div class="kpi-card">
+        <div class="label">Units Inbound</div>
+        <div class="value">2,000</div>
+      </div>
+      <div class="kpi-card">
+        <div class="label">At Risk</div>
+        <div class="value">1</div>
+      </div>
+      <div class="kpi-card">
+        <div class="label">Late</div>
+        <div class="value">1</div>
+      </div>
+    </section>
+
+    <!-- Urgent Alerts Table -->
+    <section class="section-card">
+      <h2>🚨 NEEDS YOUR ATTENTION</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>PO #</th>
+            <th>Supplier</th>
+            <th>Issue / Status</th>
+            <th>Units</th>
+            <th>Action Required</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>PO1045</strong></td>
+            <td>ABC Factory</td>
+            <td><span class="badge badge-late">🔴 7 Days Late</span></td>
+            <td>1,200</td>
+            <td>Contact supplier for revised ETA</td>
+          </tr>
+          <tr>
+            <td><strong>PO1051</strong></td>
+            <td>Shenzhen Co</td>
+            <td><span class="badge badge-risk">🟠 At Risk</span></td>
+            <td>800</td>
+            <td>Verify booking with freight forwarder</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Stock Cover Overview -->
+    <section class="section-card">
+      <h2>📈 STOCK COVER & REORDER ALERTS</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>SKU</th>
+            <th>Product Name</th>
+            <th>Current Stock</th>
+            <th>Avg Weekly Sales</th>
+            <th>Weeks Cover</th>
+            <th>Stockout Risk</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>DRS01</td>
+            <td>Satin Dress</td>
+            <td>86</td>
+            <td>52</td>
+            <td>1.65 weeks</td>
+            <td><span class="badge badge-late">🔴 High Risk</span></td>
+          </tr>
+          <tr>
+            <td>TOP22</td>
+            <td>Rib Top</td>
+            <td>420</td>
+            <td>70</td>
+            <td>6.00 weeks</td>
+            <td><span class="badge badge-healthy">🟢 Low Risk</span></td>
+          </tr>
+          <tr>
+            <td>KN08</td>
+            <td>Knit Cardigan</td>
+            <td>240</td>
+            <td>40</td>
+            <td>6.00 weeks</td>
+            <td><span class="badge badge-healthy">🟢 Low Risk</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+</body>
+</html>
